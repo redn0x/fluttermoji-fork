@@ -56,7 +56,7 @@ const Map<String, int> defaultFluttermojiOptions = {
   'facialHairType': 0,
   'facialHairColor': 1,
   'clotheType': 4,
-  'eyeType': 6,
+  'eyeType': 0,
   'eyebrowType': 10,
   'mouthType': 8,
   'skinColor': 3,
