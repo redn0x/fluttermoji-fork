@@ -108,7 +108,7 @@ class NewPage extends StatefulWidget {
 }
 
 class _NewPageState extends State<NewPage> {
-  late Map<String?, dynamic> selectedOptions;
+  late Map<String, dynamic> selectedOptions;
 
   @override
   void initState() {
@@ -156,7 +156,7 @@ class _NewPageState extends State<NewPage> {
                   initialSelectedOptions: selectedOptions,
                   theme: FluttermojiThemeData(
                       boxDecoration: BoxDecoration(boxShadow: [BoxShadow()])),
-                  onOptionSelected: (Map<String?, dynamic> selectedOptions) {
+                  onOptionSelected: (Map<String, dynamic> selectedOptions) {
                     setState(() {
                       this.selectedOptions = selectedOptions;
                     });

@@ -29,7 +29,7 @@ class FluttermojiCircleAvatar extends StatelessWidget {
 
   final double radius;
   final Color? backgroundColor;
-  final Map<String?, dynamic> options;
+  final Map<String, dynamic> options;
 
   @override
   Widget build(BuildContext context) {

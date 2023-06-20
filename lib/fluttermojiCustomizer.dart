@@ -15,7 +15,7 @@ import 'fluttermoji_assets/top/accessories/accessories.dart';
 import 'fluttermoji_assets/top/facialHair/facialHair.dart';
 import 'fluttermoji_assets/top/hairStyles/hairStyle.dart';
 
-typedef void OptionSelectedCallback(Map<String?, dynamic> selectedOptions);
+typedef void OptionSelectedCallback(Map<String, dynamic> selectedOptions);
 
 /// This widget provides the user with a UI for customizing their Fluttermoji
 ///
@@ -96,7 +96,7 @@ class FluttermojiCustomizer extends StatefulWidget {
   /// in your app to let users save their selection manually.
   final bool autosave;
 
-  final Map<String?, dynamic>? initialSelectedOptions;
+  final Map<String, dynamic>? initialSelectedOptions;
 
   final OptionSelectedCallback? onOptionSelected;
 
@@ -111,7 +111,7 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
   late TabController tabController;
   final attributesCount = 11;
   var heightFactor = 0.4, widthFactor = 0.95;
-  late Map<String?, dynamic> selectedOptions = {
+  late Map<String, dynamic> selectedOptions = {
     'topType': 24,
     'accessoriesType': 0,
     'hairColor': 1,
@@ -152,7 +152,7 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
   void onTapOption(int index, int? i, AttributeItem attribute) {
     if (index != i) {
       setState(() {
-        selectedOptions[attribute.key] = index;
+        selectedOptions[attribute.key!] = index;
       });
 
       if (widget.onOptionSelected != null)
@@ -258,7 +258,7 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
         attributeIndex++) {
       var attribute = attributes[attributeIndex];
       if (!selectedOptions.containsKey(attribute.key)) {
-        selectedOptions[attribute.key] = 0;
+        selectedOptions[attribute.key!] = 0;
       }
 
       /// Number of options available for said [attribute]
