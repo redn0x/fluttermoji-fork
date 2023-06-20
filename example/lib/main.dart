@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:fluttermoji/fluttermoji.dart';
+import 'package:fluttermoji/fluttermoji_assets/fluttermojimodel.dart';
 
 void main() {
   runApp(MyApp());
@@ -56,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
           FluttermojiCircleAvatar(
             backgroundColor: Colors.grey[200],
             radius: 100,
+            options: defaultFluttermojiOptions,
           ),
           SizedBox(
             height: 25,
@@ -98,12 +100,26 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class NewPage extends StatelessWidget {
+class NewPage extends StatefulWidget {
   const NewPage({Key? key}) : super(key: key);
+
+  @override
+  State<NewPage> createState() => _NewPageState();
+}
+
+class _NewPageState extends State<NewPage> {
+  late Map<String?, dynamic> selectedOptions;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedOptions = Map.from(defaultFluttermojiOptions);
+  }
 
   @override
   Widget build(BuildContext context) {
     var _width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(),
       body: Center(
@@ -116,6 +132,7 @@ class NewPage extends StatelessWidget {
                 child: FluttermojiCircleAvatar(
                   radius: 100,
                   backgroundColor: Colors.grey[200],
+                  options: selectedOptions,
                 ),
               ),
               SizedBox(
@@ -127,7 +144,6 @@ class NewPage extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     Spacer(),
-                    FluttermojiSaveWidget(),
                   ],
                 ),
               ),
@@ -137,8 +153,14 @@ class NewPage extends StatelessWidget {
                 child: FluttermojiCustomizer(
                   scaffoldWidth: min(600, _width * 0.85),
                   autosave: false,
+                  initialSelectedOptions: selectedOptions,
                   theme: FluttermojiThemeData(
                       boxDecoration: BoxDecoration(boxShadow: [BoxShadow()])),
+                  onOptionSelected: (Map<String?, dynamic> selectedOptions) {
+                    setState(() {
+                      this.selectedOptions = selectedOptions;
+                    });
+                  },
                 ),
               ),
             ],
